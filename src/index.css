@@ -1,0 +1,50 @@
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* index.css */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+body {
+  background: linear-gradient(270deg, #f1f4db, #c3ddc3, #ffddd1, #f1f4db);
+  background-size: 800% 800%;
+  animation: gradient 30s ease infinite;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  padding-top: 100px; /* Adjust this value to match the header height and margin */
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+
+
+
+
+
+
