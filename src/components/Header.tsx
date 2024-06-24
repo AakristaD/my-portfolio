@@ -2,10 +2,17 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import { styled, alpha } from '@mui/material/styles';
+import { useMediaQuery, useTheme, Box } from '@mui/material';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
-    backgroundColor: alpha('#ffffff', .9), // Light translucent white
+    backgroundColor: alpha('#ffffff', 0.9), // Light translucent white
     borderRadius: '50px',
     margin: '10px auto',
     maxWidth: '800px',
@@ -16,12 +23,31 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
     transform: 'translateX(-50%)',
     width: '80%', // Make it responsive; adjust width as needed
     zIndex: 1300, // Ensure it's above other content
+    [theme.breakpoints.down('sm')]: {
+        width: '50px',
+        height: '50px',
+        borderRadius: '50%',
+        left: '10px',
+        transform: 'none',
+        margin: '10px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+}));
+
+const MenuIconStyled = styled(MenuIcon)(({ theme }) => ({
+    color: '#003900',
 }));
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     display: 'flex',
     justifyContent: 'space-around',
     padding: '0 30px',
+    [theme.breakpoints.down('sm')]: {
+        justifyContent: 'center',
+        padding: '0',
+    },
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -39,16 +65,72 @@ const StyledButton = styled(Button)(({ theme }) => ({
     },
 }));
 
+const DrawerList = styled(List)(({ theme }) => ({
+    fontFamily: 'Poppins, sans-serif',
+    color: '#003900',
+    backgroundColor: alpha('#ffffff', 0.9),
+    height: '100%',
+}));
+
 function Header() {
+    const [drawerOpen, setDrawerOpen] = React.useState(false);
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+    const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+        if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
+            return;
+        }
+        setDrawerOpen(open);
+    };
+
+    const list = () => (
+        <Box
+            sx={{ width: 250 }}
+            role="presentation"
+            onClick={toggleDrawer(false)}
+            onKeyDown={toggleDrawer(false)}
+        >
+            <DrawerList>
+                <ListItem button component="a" href="#/">
+                    <ListItemText primary="Home" />
+                </ListItem>
+                <ListItem button component="a" href="#/my-work">
+                    <ListItemText primary="My Work" />
+                </ListItem>
+                <ListItem button component="a" href="#/about-me">
+                    <ListItemText primary="About Me" />
+                </ListItem>
+                <ListItem button component="a" href="#/contact">
+                    <ListItemText primary="Contact Me" />
+                </ListItem>
+            </DrawerList>
+        </Box>
+    );
+
     return (
-        <StyledAppBar position="sticky">
-        <StyledToolbar>
-                <StyledButton href="#/">Home</StyledButton>
-                <StyledButton href="#/my-work">My Work</StyledButton>
-                <StyledButton href="#/about-me">About Me</StyledButton>
-                <StyledButton href="#/contact">Contact Me</StyledButton>
-            </StyledToolbar>
-        </StyledAppBar>
+        <>
+            <StyledAppBar position="sticky" style={{ display: drawerOpen ? 'none' : 'flex' }}>
+                <StyledToolbar>
+                    {isMobile && !drawerOpen && (
+                        <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
+                            <MenuIconStyled />
+                        </IconButton>
+                    )}
+                    {!isMobile && (
+                        <>
+                            <StyledButton href="#/">Home</StyledButton>
+                            <StyledButton href="#/my-work">My Work</StyledButton>
+                            <StyledButton href="#/about-me">About Me</StyledButton>
+                            <StyledButton href="#/contact">Contact Me</StyledButton>
+                        </>
+                    )}
+                </StyledToolbar>
+            </StyledAppBar>
+            <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+                {list()}
+            </Drawer>
+        </>
     );
 }
 

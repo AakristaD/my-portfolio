@@ -42,7 +42,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 
 function About() {
     return (
-        <AboutContainer sx={{paddingTop: 10}}>
+        <AboutContainer sx={{paddingTop: 15}}>
             <ContentGrid container spacing={2} alignItems="center">
                 <Grid item xs={12} md={6}>
                     <Box display="flex" justifyContent="center">
