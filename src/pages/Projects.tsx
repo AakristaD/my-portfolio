@@ -49,7 +49,7 @@ const Projects: React.FC = () => {
     }));
 
     return (
-        <Container>
+        <Container sx={{paddingTop: 10}}>
             <HeaderSection>
                 <AnimatedHeader text="A glimpse into some projects." variant="header" />
                 <AnimatedHeader text="Projects I completed for university, personal learning, and occasionally just for fun." variant="subheader" />

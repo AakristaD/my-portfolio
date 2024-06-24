@@ -41,9 +41,9 @@ const StyledButton = styled(Button)(({ theme }) => ({
 
 function Header() {
     return (
-        <StyledAppBar position="fixed">
-            <StyledToolbar>
-                <StyledButton href="/">Home</StyledButton>
+        <StyledAppBar position="sticky">
+        <StyledToolbar>
+                <StyledButton href="#/">Home</StyledButton>
                 <StyledButton href="#/my-work">My Work</StyledButton>
                 <StyledButton href="#/about-me">About Me</StyledButton>
                 <StyledButton href="#/contact">Contact Me</StyledButton>

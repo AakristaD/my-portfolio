@@ -76,7 +76,7 @@ const Home: React.FC = () => {
     ];
 
     return (
-        <HomeContainer>
+        <HomeContainer sx={{paddingTop: 10}}>
             <AnimatedHeader text="Hi. I'm Aakrista." variant="largeHeader"/>
             <AnimatedHeader text="A 3rd year computer science student" variant="header"/>
             <AnimatedHeader

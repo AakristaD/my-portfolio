@@ -12,16 +12,16 @@ import Contact from './pages/Contact';
 const App: React.FC = () => {
     return (
         <Router>
-            <Header />
+            <Header/>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/my-work" element={<Projects />} />
-                <Route path="/about-me" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={<NotFound />} />
+                <Route path="/" element={<Home/>}/>
+                <Route path="/my-work" element={<Projects/>}/>
+                <Route path="/about-me" element={<About/>}/>
+                <Route path="/contact" element={<Contact/>}/>
+                <Route path="*" element={<NotFound/>}/>
             </Routes>
-            <FloatingMessageIcon />
-            <Footer />
+            <FloatingMessageIcon/>
+            <Footer/>
         </Router>
     );
 };
