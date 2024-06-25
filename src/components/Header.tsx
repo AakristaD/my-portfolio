@@ -30,9 +30,6 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
         left: '10px',
         transform: 'none',
         margin: '10px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
     },
 }));
 
@@ -65,13 +62,6 @@ const StyledButton = styled(Button)(({ theme }) => ({
     },
 }));
 
-const DrawerList = styled(List)(({ theme }) => ({
-    fontFamily: 'Poppins, sans-serif',
-    color: '#003900',
-    backgroundColor: alpha('#ffffff', 0.9),
-    height: '100%',
-}));
-
 function Header() {
     const [drawerOpen, setDrawerOpen] = React.useState(false);
     const theme = useTheme();
@@ -91,7 +81,7 @@ function Header() {
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
-            <DrawerList>
+            <List>
                 <ListItem button component="a" href="#/">
                     <ListItemText primary="Home" />
                 </ListItem>
@@ -104,15 +94,15 @@ function Header() {
                 <ListItem button component="a" href="#/contact">
                     <ListItemText primary="Contact Me" />
                 </ListItem>
-            </DrawerList>
+            </List>
         </Box>
     );
 
     return (
         <>
-            <StyledAppBar position="sticky" style={{ display: drawerOpen ? 'none' : 'flex' }}>
+            <StyledAppBar position="sticky">
                 <StyledToolbar>
-                    {isMobile && !drawerOpen && (
+                    {isMobile && (
                         <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
                             <MenuIconStyled />
                         </IconButton>
