@@ -8,20 +8,22 @@ import Home from './pages/Home';
 import About from './pages/About';
 import FloatingMessageIcon from './components/FloatingMailerIcon';
 import Contact from './pages/Contact';
+import ProjectDetail from './pages/ProjectDetail'; // Import ProjectDetail component
 
 const App: React.FC = () => {
     return (
         <Router>
-            <Header/>
+            <Header />
             <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/my-work" element={<Projects/>}/>
-                <Route path="/about-me" element={<About/>}/>
-                <Route path="/contact" element={<Contact/>}/>
-                <Route path="*" element={<NotFound/>}/>
+                <Route path="/" element={<Home />} />
+                <Route path="/my-work" element={<Projects />} />
+                <Route path="/about-me" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/project/:projectId" element={<ProjectDetail />} /> {/* Add this route */}
+                <Route path="*" element={<NotFound />} />
             </Routes>
-            <FloatingMessageIcon/>
-            <Footer/>
+            <FloatingMessageIcon />
+            <Footer />
         </Router>
     );
 };

@@ -25,7 +25,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
-        <Link to={`/view-project/${project.projectId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link to={`/project/${project.projectId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             <StyledCard variant="outlined">
                 <CardActionArea>
                     <CardMedia
