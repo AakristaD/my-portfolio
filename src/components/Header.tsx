@@ -21,7 +21,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
     top: '10px', // Adjust this value as needed
     left: '50%',
     transform: 'translateX(-50%)',
-    width: '80%', // Make it responsive; adjust width as needed
+    width: '100%', // Make it responsive; adjust width as needed
     zIndex: 1300, // Ensure it's above other content
     [theme.breakpoints.down('sm')]: {
         width: '50px',
@@ -30,6 +30,9 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
         left: '10px',
         transform: 'none',
         margin: '10px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 }));
 
@@ -39,8 +42,9 @@ const MenuIconStyled = styled(MenuIcon)(({ theme }) => ({
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     padding: '0 30px',
+    width: '100%',
     [theme.breakpoints.down('sm')]: {
         justifyContent: 'center',
         padding: '0',
@@ -62,6 +66,13 @@ const StyledButton = styled(Button)(({ theme }) => ({
     },
 }));
 
+const DrawerList = styled(List)(({ theme }) => ({
+    fontFamily: 'Poppins, sans-serif',
+    color: '#003900',
+    backgroundColor: alpha('#ffffff', 0.9),
+    height: '100%',
+}));
+
 function Header() {
     const [drawerOpen, setDrawerOpen] = React.useState(false);
     const theme = useTheme();
@@ -81,7 +92,7 @@ function Header() {
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
-            <List>
+            <DrawerList>
                 <ListItem button component="a" href="#/">
                     <ListItemText primary="Home" />
                 </ListItem>
@@ -94,17 +105,17 @@ function Header() {
                 <ListItem button component="a" href="#/contact">
                     <ListItemText primary="Contact Me" />
                 </ListItem>
-            </List>
+            </DrawerList>
         </Box>
     );
 
     return (
         <>
-            <StyledAppBar position="sticky">
+            <StyledAppBar position="sticky" style={{ display: drawerOpen ? 'none' : 'flex' }}>
                 <StyledToolbar>
-                    {isMobile && (
+                    {isMobile && !drawerOpen && (
                         <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
-                            <MenuIconStyled />
+                            &nbsp;&nbsp;<MenuIconStyled />
                         </IconButton>
                     )}
                     {!isMobile && (
