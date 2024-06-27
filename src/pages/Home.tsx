@@ -75,14 +75,19 @@ const Home: React.FC = () => {
     return (
         <HomeContainer sx={{ paddingTop: 15 }}>
             <AnimatedHeader text="Hi. I'm Aakrista." variant="largeHeader" />
-            <AnimatedHeader text="A 3rd year computer science student" variant="header" />
+            <AnimatedHeader text="A 3rd year computer science student" variant="brown"  />
             <AnimatedHeader
                 text="I'm a final year student at University of Canterbury, passionate about all things tech."
                 variant="subheader"
             />
             <hr style={{ border: 'none', borderTop: '2px solid black', margin: '32px 0' }} />
-            <AnimatedHeader text="Featured Projects" variant='subheader' />
-            <hr style={{ border: 'none', borderTop: '2px solid black', margin: '32px 0' }} />
+            <Typography
+                variant="body1"
+                paragraph
+                sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '2rem', color: '#006400' }}
+            >
+                <strong>Featured Projects</strong>
+            </Typography>
 
             <Grid container spacing={4} justifyContent="center" alignItems="center">
                 {projects.map((project) => (

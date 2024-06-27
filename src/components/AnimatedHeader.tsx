@@ -19,7 +19,7 @@ const AnimatedLargeHeaderText = styled(Typography)(({ theme }) => ({
     fontFamily: 'Poppins, sans-serif',
     marginBottom: theme.spacing(2),
     animation: `${fadeIn} 1s ease-in-out`,
-    color: '#004000', // Dark green color for large header
+    color: 'brown', // Dark green color for large header
     [theme.breakpoints.down('md')]: {
         fontSize: '4rem', // Smaller font size for medium screens
     },
@@ -34,7 +34,22 @@ const AnimatedHeaderText = styled(Typography)(({ theme }) => ({
     fontFamily: 'Poppins, sans-serif',
     marginBottom: theme.spacing(2),
     animation: `${fadeIn} 1s ease-in-out`,
-    color: '#005300', // Dark green color
+    color: 'brown', // Dark green color
+    [theme.breakpoints.down('md')]: {
+        fontSize: '3rem', // Smaller font size for medium screens
+    },
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '2rem', // Smaller font size for small screens
+    },
+}));
+
+const AnimatedHeaderBrownText = styled(Typography)(({ theme }) => ({
+    fontSize: '4rem',
+    fontWeight: 'bold',
+    fontFamily: 'Poppins, sans-serif',
+    marginBottom: theme.spacing(2),
+    animation: `${fadeIn} 1s ease-in-out`,
+    color: '#003900', // Dark green color
     [theme.breakpoints.down('md')]: {
         fontSize: '3rem', // Smaller font size for medium screens
     },
@@ -58,7 +73,8 @@ const AnimatedSubHeaderText = styled(Typography)(({ theme }) => ({
 
 interface AnimatedHeaderProps {
     text: string;
-    variant: 'largeHeader' | 'header' | 'subheader';
+    variant: 'largeHeader' | 'header' | 'subheader' | "brown";
+
 }
 
 const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({ text, variant }) => {
@@ -69,6 +85,8 @@ const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({ text, variant }) => {
             return <AnimatedHeaderText>{text}</AnimatedHeaderText>;
         case 'subheader':
             return <AnimatedSubHeaderText>{text}</AnimatedSubHeaderText>;
+        case 'brown':
+            return <AnimatedHeaderBrownText>{text}</AnimatedHeaderBrownText>;
         default:
             return null;
     }

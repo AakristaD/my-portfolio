@@ -1,5 +1,5 @@
-import React from 'react';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { HashRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import NotFound from './pages/NotFound';
@@ -10,9 +10,20 @@ import FloatingMessageIcon from './components/FloatingMailerIcon';
 import Contact from './pages/Contact';
 import ProjectDetail from './pages/ProjectDetail'; // Import ProjectDetail component
 
+const ScrollToTop = () => {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+};
+
 const App: React.FC = () => {
     return (
         <Router>
+            <ScrollToTop /> {/* Add this line */}
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />

@@ -18,7 +18,7 @@ const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
     width: 400,
     height: 400,
     objectFit: 'cover',
-    animation: `${fadeIn} 1s ease-in-out`,
+    animation: `${fadeIn} 0s ease-in-out`,
 }));
 
 interface AnimatedImageProps extends CardMediaProps {
