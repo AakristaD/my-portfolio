@@ -75,9 +75,9 @@ const Home: React.FC = () => {
     return (
         <HomeContainer sx={{ paddingTop: 15 }}>
             <AnimatedHeader text="Hi. I'm Aakrista." variant="largeHeader" />
-            <AnimatedHeader text="A 3rd year computer science student" variant="brown"  />
+            <AnimatedHeader text="A Computer Science Graduate" variant="brown"  />
             <AnimatedHeader
-                text="I'm a final year student at University of Canterbury, passionate about all things tech."
+                text="I'm a recent graduate of UC, passionate about all things tech."
                 variant="subheader"
             />
             <hr style={{ border: 'none', borderTop: '2px solid black', margin: '32px 0' }} />
